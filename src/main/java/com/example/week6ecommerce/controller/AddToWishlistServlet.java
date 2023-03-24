@@ -1,38 +1,29 @@
 package com.example.week6ecommerce.controller;
 
-import com.example.week6ecommerce.dao.CartDAO;
-import com.example.week6ecommerce.dao.ProductDAO;
-import com.example.week6ecommerce.model.Product;
+import com.example.week6ecommerce.dao.WishlistDAO;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-
-@WebServlet(name = "CartServlet", value = "/addToCart")
-public class AddToCartServlet extends HttpServlet {
-    Product product;
-    ProductDAO productDAO;
-    CartDAO cartDAO;
+@WebServlet(name = "WishlistServlet", value = "/AddToWishlist")
+public class AddToWishlistServlet extends HttpServlet {
+    WishlistDAO wishlistDAO;
     ProductServlet productServlet;
-
-    public AddToCartServlet() {
-        this.product = new Product();
-        this.productDAO = new ProductDAO();
-        this.cartDAO = new CartDAO();
+    public AddToWishlistServlet() {
+        this.wishlistDAO = new WishlistDAO();
         this.productServlet = new ProductServlet();
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response){
         int customerID = Integer.parseInt(request.getParameter("customer_id"));
         int productID = (Integer.parseInt(request.getParameter("product_id")));
-        int quantity = 1;
         RequestDispatcher requestDispatcher;
 
         try {
-            boolean isAddedToCart = cartDAO.addToCart(customerID,productID,quantity);
+            boolean isAddedToWishlist = wishlistDAO.addToWishList(customerID,productID);
             String prevPage = request.getParameter("prevPage");
             if(prevPage.equals("product.jsp")){
                 productServlet.doGet(request,response);
@@ -41,7 +32,7 @@ public class AddToCartServlet extends HttpServlet {
                 requestDispatcher.forward(request, response);
             }
         }catch (ServletException | IOException e) {
-            System.out.println("Exception in adding to cart: "+e.getMessage());
+            System.out.println("Exception in adding to wishlist: "+e.getMessage());
         }
     }
 }

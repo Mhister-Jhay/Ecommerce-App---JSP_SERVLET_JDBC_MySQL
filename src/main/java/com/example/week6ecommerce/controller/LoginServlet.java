@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
             }
             requestDispatcher.forward(request,response);
         }catch(SQLException e){
-            System.out.println("Exception in redirecting: "+e.getMessage());
+            System.out.println("Exception in logging in: "+e.getMessage());
         }
     }
 }

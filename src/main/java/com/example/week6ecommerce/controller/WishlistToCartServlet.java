@@ -2,6 +2,7 @@ package com.example.week6ecommerce.controller;
 
 import com.example.week6ecommerce.dao.CartDAO;
 import com.example.week6ecommerce.dao.ProductDAO;
+import com.example.week6ecommerce.dao.WishlistDAO;
 import com.example.week6ecommerce.model.Product;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -9,19 +10,17 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-
-@WebServlet(name = "CartServlet", value = "/addToCart")
-public class AddToCartServlet extends HttpServlet {
+@WebServlet(name = "WishlistToCartServlet", value = "/WishlistToCart")
+public class WishlistToCartServlet extends HttpServlet {
     Product product;
     ProductDAO productDAO;
     CartDAO cartDAO;
-    ProductServlet productServlet;
-
-    public AddToCartServlet() {
+    RemoveFromWishlistServlet removeFromWishlistServlet;
+    public WishlistToCartServlet(){
         this.product = new Product();
         this.productDAO = new ProductDAO();
         this.cartDAO = new CartDAO();
-        this.productServlet = new ProductServlet();
+        this.removeFromWishlistServlet = new RemoveFromWishlistServlet();
     }
 
     @Override
@@ -29,19 +28,18 @@ public class AddToCartServlet extends HttpServlet {
         int customerID = Integer.parseInt(request.getParameter("customer_id"));
         int productID = (Integer.parseInt(request.getParameter("product_id")));
         int quantity = 1;
-        RequestDispatcher requestDispatcher;
 
         try {
             boolean isAddedToCart = cartDAO.addToCart(customerID,productID,quantity);
-            String prevPage = request.getParameter("prevPage");
-            if(prevPage.equals("product.jsp")){
-                productServlet.doGet(request,response);
+            if(isAddedToCart){
+                removeFromWishlistServlet.doPost(request,response);
+                request.setAttribute("statusCart", "success");
+
             }else{
-                requestDispatcher = request.getRequestDispatcher("index.jsp");
-                requestDispatcher.forward(request, response);
+                request.setAttribute("statusCart","failed");
             }
-        }catch (ServletException | IOException e) {
-            System.out.println("Exception in adding to cart: "+e.getMessage());
+        }catch (Exception e) {
+            System.out.println("Exception in adding to cart from wishlist: "+e.getMessage());
         }
     }
 }

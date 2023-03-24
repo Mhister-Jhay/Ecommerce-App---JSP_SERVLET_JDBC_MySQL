@@ -45,7 +45,7 @@ public class ProductServlet extends HttpServlet {
 
             dispatcher.forward(request, response);
         }catch (ServletException | IOException | SQLException e) {
-            System.out.println("Exception in sending all products: "+e.getMessage());
+            System.out.println("Exception in viewing all products: "+e.getMessage());
         }
     }
 }

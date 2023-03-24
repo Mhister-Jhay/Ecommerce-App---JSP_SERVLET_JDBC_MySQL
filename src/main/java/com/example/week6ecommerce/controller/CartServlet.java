@@ -19,7 +19,7 @@ public class CartServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response){
+    protected void doGet(HttpServletRequest request, HttpServletResponse response){
         int customer_id = Integer.parseInt(request.getParameter("customer_id"));
         try{
         List<Cart> cartList = cartDAO.viewCart(customer_id);

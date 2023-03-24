@@ -2365,39 +2365,39 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #212529;
-  background-color: #FFD333;
-  border-color: #FFD333;
+  background-color: #ac91ac;
+  border-color: #c5a3c5;
 }
 
 .btn-primary:hover {
   color: #212529;
-  background-color: #ffcb0d;
-  border-color: #ffc800;
+  background-color: #ac91ac;
+  border-color: #c5a3c5;
 }
 
 .btn-primary:focus, .btn-primary.focus {
   color: #212529;
-  background-color: #ffcb0d;
-  border-color: #ffc800;
+  background-color: #ac91ac;
+  border-color: #c5a3c5;
   box-shadow: 0 0 0 0.2rem rgba(222, 185, 50, 0.5);
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
   color: #212529;
-  background-color: #FFD333;
-  border-color: #FFD333;
+  background-color: #ac91ac;
+  border-color: #c5a3c5;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #212529;
-  background-color: #ffc800;
-  border-color: #f2be00;
+  background-color: #ac91ac;
+  border-color: #c5a3c5;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(222, 185, 50, 0.5);
+  box-shadow: 0 0 0 0.2rem rgb(172, 145, 172);
 }
 
 .btn-secondary {
@@ -3774,11 +3774,11 @@ input[type="button"].btn-block {
 }
 
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px transparent, none;
+  box-shadow: 0 0 0 1px transparent;
 }
 
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px transparent, none;
+  box-shadow: 0 0 0 1px transparent;
 }
 
 .custom-range::-moz-focus-outer {
@@ -6115,9 +6115,11 @@ button.bg-primary:focus {
 }
 
 .bg-secondary {
-  background: linear-gradient(to bottom, #8B008B, #c8a2c8) !important;
+  background: linear-gradient(to bottom, #d4bbed, #9b8cdb) !important;
 }
-
+.bg-secondary2 {
+  background: linear-gradient(to bottom, #e6eaed, #fdfaff) !important;
+}
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
@@ -6169,7 +6171,9 @@ button.bg-danger:focus {
   background: linear-gradient(to bottom, #b7b5b5, #3f3f3f, #aba9a9) !important;
 }
 
-
+.bg-light2 {
+  background: linear-gradient(to bottom, #b7b5b5, #faf9f9, #aba9a9) !important;
+}
 
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,
@@ -9281,7 +9285,9 @@ button.bg-dark:focus {
 .text-primary {
   color: #f6f5f2 !important;
 }
-
+.text-primary2 {
+  color: #f6bd12 !important;
+}
 a.text-primary:hover, a.text-primary:focus {
   color: #cce5ff !important;
 }
@@ -9359,7 +9365,6 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .text-hide {
-  font: 0/0 a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;

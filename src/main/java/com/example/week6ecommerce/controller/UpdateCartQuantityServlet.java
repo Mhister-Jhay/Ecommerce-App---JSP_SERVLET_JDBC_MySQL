@@ -19,25 +19,34 @@ public class UpdateCartQuantityServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("product_id parameter value: " + request.getParameter("product_id"));
-        System.out.println("customer_id parameter value: " + request.getParameter("customer_id"));
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response){
         int product_id = Integer.parseInt(request.getParameter("product_id"));
         int customer_id = Integer.parseInt(request.getParameter("customer_id"));
         int quantity = 0;
         String submit_type = request.getParameter("submit_type");
-        System.out.println(submit_type);
-        if(submit_type != null){
-            if(submit_type.equals("minus")){
-                quantity = -1;
-            }else{
-                quantity = 1;
+        boolean isQuantityUpdated = false;
+        try{
+            if(submit_type != null){
+                if(submit_type.equals("minus")){
+                    quantity = -1;
+                    isQuantityUpdated = cartDAO.updateCartQuantity(quantity,product_id,customer_id);
+                }else if(submit_type.equals("plus")){
+                    quantity = 1;
+                    isQuantityUpdated = cartDAO.updateCartQuantity(quantity,product_id,customer_id);
+                }else if (submit_type.equals("delete")){
+                    isQuantityUpdated = cartDAO.removeFromCart(product_id,customer_id);
+                }
             }
+            if(isQuantityUpdated){
+                cartServlet.doGet(request, response);
+            } else{
+                request.setAttribute("status","failed");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("Product");
+                requestDispatcher.forward(request,response);
+            }
+        }catch(ServletException | IOException e){
+            System.out.println("Exception in Updating Cart Quantity: "+e.getMessage());
         }
-        boolean isQuantityUpdated = cartDAO.updateCartQuantity(quantity,product_id,customer_id);
-        if(isQuantityUpdated){
-            cartServlet.doPost(request, response);
-        }
+
     }
 }

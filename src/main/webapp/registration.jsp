@@ -2,25 +2,26 @@
 <html lang="en" >
 <head>
 	<meta charset="UTF-8">
-	<title>Jhay Commerce</title>
+	<title>Jhay Commerce | registration</title>
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'>
 	<link rel="stylesheet" href="css/registration.css">
+	<link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
-<div class="col-lg-4 align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex" style= "width: 400px; margin: 50px auto;">
-	<a href="" class="text-decoration-none">
-		<span class="h1 text-uppercase text-primary bg-dark px-2">Jhay</span>
-		<span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Commerce</span>
-	</a>
-</div>
 	<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
-
+	<input type="hidden" id="status1" value="<%= request.getAttribute("status1")%>">
 	<div class="main">
 		<!-- Sign up form -->
 		<section class="signup">
-				<div class="screen">
+			<div class="screen__content mb-4">
+				<a href="index.jsp" class="text-decoration-none">
+					<span class="h1 text-uppercase text-primary bg-dark px-2 font-weight-bold">Jhay</span>
+					<span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1 font-weight-bold">Commerce</span>
+				</a>
+			</div>
+			<div class="screen">
 					<div class="screen__content">
 
 						<form method="post" action="register" class="register-form" id="register-form">
@@ -76,6 +77,20 @@
 					'Welcome Onboard',
 					'Proceed to Login',
 					'success'
+			)
+		}else if(status ==="failed"){
+			Swal.fire(
+					'Registration Failed',
+					'Email is already registered',
+					'error'
+			)
+		}
+		var status1 = document.getElementById("status1").value;
+		if (status1 === "failed") {
+			Swal.fire(
+					'Failed registration',
+					'Password do not match',
+					'error'
 			)
 		}
 	</script>

@@ -22,75 +22,7 @@ public class ProductDAO {
     }
 
 
-    private boolean createNewProduct(String name, int categoryID, double price, int quantity, String image){
-        boolean isProductCreated = false;
-        try{
-            Connection connection = dbConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(queries.getAddNewProduct());
-            preparedStatement.setString(1, name);
-            preparedStatement.setInt(2, categoryID);
-            preparedStatement.setDouble(3, price);
-            preparedStatement.setInt(4, quantity);
-            preparedStatement.setString(5, image);
-            preparedStatement.executeQuery();
-            isProductCreated = true;
-        }catch (SQLException e) {
-            System.out.println("Exception in registering customers: "+e.getMessage());
-        }
-        if(isProductCreated){
-            getAllProducts();
-        }
-        return isProductCreated;
-    }
 
-    private boolean updateProductQuantity(int productID, int quantity){
-        boolean isQuantityUpdated = false;
-        try{
-            Connection connection = dbConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(queries.getUpdateProductQuantity());
-            preparedStatement.setInt(1, quantity);
-            preparedStatement.setInt(2, productID);
-            preparedStatement.executeUpdate();
-            isQuantityUpdated = true;
-        }catch (SQLException e) {
-            System.out.println("Exception in registering customers: "+e.getMessage());
-        }
-        if(isQuantityUpdated){
-            getAllProducts();
-        }
-        return isQuantityUpdated;
-    }
-    private boolean updateProductPrice(int productID, double price){
-        boolean isQuantityUpdated = false;
-        try{
-            Connection connection = dbConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(queries.getUpdateProductPrice());
-            preparedStatement.setDouble(1, price);
-            preparedStatement.setInt(2, productID);
-            preparedStatement.executeUpdate();
-            isQuantityUpdated = true;
-        }catch (SQLException e) {
-            System.out.println("Exception in registering customers: "+e.getMessage());
-        }
-        if(isQuantityUpdated){
-            getAllProducts();
-        }
-        return isQuantityUpdated;
-    }
-
-    private boolean deleteProduct(int productID){
-        boolean isProductDeleted = false;
-        try{
-            Connection connection = dbConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(queries.getDeleteProduct());
-            preparedStatement.setInt(1, productID);
-            preparedStatement.executeQuery();
-            isProductDeleted = true;
-        }catch (SQLException e) {
-            System.out.println("Exception in registering customers: "+e.getMessage());
-        }
-        return isProductDeleted;
-    }
 
     public ResultSet getAllProducts(){
         ResultSet resultSet = null;

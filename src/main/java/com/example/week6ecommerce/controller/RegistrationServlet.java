@@ -33,22 +33,26 @@ public class RegistrationServlet extends HttpServlet {
         customer.setPhoneNumber(request.getParameter("phone_number"));
         customer.setEmail(request.getParameter("email"));
         customer.setPassword(request.getParameter("password"));
+        String password = request.getParameter("re_password");
 
         RequestDispatcher requestDispatcher;
-
         try {
-            boolean registeredStatus = customerDAO.getCustomerRegistered();
-            if(registeredStatus){
-                request.setAttribute("status","success");
+            if(!password.equals(customer.getPassword())){
+                request.setAttribute("status1","failed");
             }else{
-                request.setAttribute("status","failed");
+
+                boolean registeredStatus = customerDAO.getCustomerRegistered();
+                if(registeredStatus){
+                    request.setAttribute("status","success");
+                }else{
+                    request.setAttribute("status","failed");
+                }
             }
             requestDispatcher = request.getRequestDispatcher("registration.jsp");
             requestDispatcher.forward(request,response);
-            System.out.println("Response Sent"+ request.getAttribute("status"));
         }catch(Exception e)
         {
-            System.out.println("Exception in Login: "+e.getMessage());
+            System.out.println("Exception in Registration: "+e.getMessage());
         }
     }
 }
