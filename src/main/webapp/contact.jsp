@@ -92,6 +92,9 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a href="index.jsp" class="nav-item nav-link active">Home</a>
                         <a href="Product" class="nav-item nav-link">Products</a>
+                        <% if (session.getAttribute("firstName")!=null&&session.getAttribute("firstName").equals("Admin")) { %>
+                        <a href="AdminHome.jsp" class="nav-item nav-link">Admin Home</a>
+                        <%}%>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-flex align-items-center">
                         <% if (session.getAttribute("logged_in") != null) { %>
