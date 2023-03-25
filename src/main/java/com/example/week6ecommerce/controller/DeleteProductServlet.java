@@ -28,7 +28,6 @@ public class DeleteProductServlet extends HttpServlet {
         try{
             boolean isDeleted = adminDAO.deleteProduct(product_id);
             RequestDispatcher requestDispatcher = null;
-            if(prevPage == null){
                     ResultSet resultSet = productDAO.getAllProducts();
                     List<Product> productList = new ArrayList<>();
                     while(resultSet.next()){
@@ -40,6 +39,7 @@ public class DeleteProductServlet extends HttpServlet {
                                 resultSet.getString("image")
                         ));
                     }
+            if(prevPage == null){
                     request.setAttribute("productList",productList);
                 requestDispatcher = request.getRequestDispatcher("updateProduct.jsp");
             }else{
