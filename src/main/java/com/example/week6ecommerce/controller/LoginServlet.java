@@ -36,7 +36,11 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("firstName", resultSet.getString("first_name"));
                 session.setAttribute("logged_in",true);
                 request.setAttribute("status","success");
-                requestDispatcher = request.getRequestDispatcher("index.jsp");
+                if(resultSet.getString("email").equals("admin@decagon.dev")){
+                    requestDispatcher = request.getRequestDispatcher("AdminHome.jsp");
+                }else{
+                    requestDispatcher = request.getRequestDispatcher("index.jsp");
+                }
             }else{
                 request.setAttribute("status","failed");
                 requestDispatcher = request.getRequestDispatcher("login.jsp");

@@ -13,7 +13,7 @@ public class Queries {
     private String getAllProducts = "SELECT * FROM e_commerce.products";
     private String updateProductQuantity = "UPDATE e_commerce.products SET quantity = ? WHERE id = ?";
     private String updateProductPrice = "UPDATE e_commerce.products SET price = ? WHERE id = ?";
-    private String addNewProduct = "INSERT INTO e_commerce.products(name,category,price,quantity,image) VALUES(?,?,?,?,?)";
+    private String addNewProduct = "INSERT INTO e_commerce.products(name,category_id,price,quantity,image) VALUES(?,?,?,?,?)";
     private String deleteProduct = "DELETE FROM e_commerce.products WHERE id = ?";
 
     // Customer Duties

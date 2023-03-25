@@ -2,13 +2,13 @@ package com.example.week6ecommerce.dao;
 
 import com.example.week6ecommerce.connection.DBConnection;
 import com.example.week6ecommerce.constant.Queries;
-import com.example.week6ecommerce.model.Product;
 import lombok.Data;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
+
 
 
 @Data
@@ -18,12 +18,12 @@ public class AdminDAO {
 
     private DBConnection dbConnection;
     public AdminDAO() {
-        this.productDAO =new ProductDAO();
+        this.dbConnection = new DBConnection();
         this.queries = new Queries();
-        this.dbConnection = getDbConnection();
+
     }
 
-    private boolean createNewProduct(String name, int categoryID, double price, int quantity, String image){
+    public boolean createNewProduct(String name, int categoryID, double price, int quantity, String image){
         boolean isProductCreated = false;
         try{
             Connection connection = dbConnection.getConnection();
@@ -33,18 +33,27 @@ public class AdminDAO {
             preparedStatement.setDouble(3, price);
             preparedStatement.setInt(4, quantity);
             preparedStatement.setString(5, image);
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
             isProductCreated = true;
         }catch (SQLException e) {
             System.out.println("Exception in creating new product: "+e.getMessage());
         }
-        if(isProductCreated){
-            productDAO.getAllProducts();
-        }
         return isProductCreated;
     }
 
-    private boolean updateProductQuantity(int productID, int quantity){
+    public ResultSet selectAProduct(int productID){
+        ResultSet resultSet = null;
+        try {
+            Connection connection = dbConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(queries.getSelectProduct());
+            preparedStatement.setInt(1,productID);
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            System.out.println("Exception in login: " + e.getMessage());
+        }
+        return resultSet;
+    }
+    public boolean updateProductQuantity(int productID, int quantity){
         boolean isQuantityUpdated = false;
         try{
             Connection connection = dbConnection.getConnection();
@@ -56,12 +65,9 @@ public class AdminDAO {
         }catch (SQLException e) {
             System.out.println("Exception in updating product quantity: "+e.getMessage());
         }
-        if(isQuantityUpdated){
-            productDAO.getAllProducts();
-        }
         return isQuantityUpdated;
     }
-    private boolean updateProductPrice(int productID, double price){
+    public boolean updateProductPrice(int productID, double price){
         boolean isQuantityUpdated = false;
         try{
             Connection connection = dbConnection.getConnection();
@@ -73,19 +79,16 @@ public class AdminDAO {
         }catch (SQLException e) {
             System.out.println("Exception in updating product price: "+e.getMessage());
         }
-        if(isQuantityUpdated){
-            productDAO.getAllProducts();
-        }
         return isQuantityUpdated;
     }
 
-    private boolean deleteProduct(int productID){
+    public boolean deleteProduct(int productID){
         boolean isProductDeleted = false;
         try{
             Connection connection = dbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(queries.getDeleteProduct());
             preparedStatement.setInt(1, productID);
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
             isProductDeleted = true;
         }catch (SQLException e) {
             System.out.println("Exception in deleting product: "+e.getMessage());

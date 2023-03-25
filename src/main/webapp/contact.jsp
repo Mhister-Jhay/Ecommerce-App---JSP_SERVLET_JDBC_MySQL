@@ -148,20 +148,19 @@
 <!-- Navbar End -->
 
 <!-- Breadcrumb Start -->
-<div class="container-fluid">
-    <div class="row px-xl-5">
-        <div class="col-12">
-            <nav class="breadcrumb bg-light mb-30">
-                <a class="breadcrumb-item text-dark" href="index.jsp">Home</a>
-                <span class="breadcrumb-item active">Contact</span>
-            </nav>
-        </div>
-    </div>
-</div>
+<<div class="container-fluid pt-5 pb-3">
 <!-- Breadcrumb End -->
 <!-- Contact Start -->
-<div class="container-fluid">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Contact Us</span></h2>
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4" style="color: black"><span class="bg-secondary pr-3">Contact Us</span></h2>
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb align-items-center bg-light mb-30">
+                    <h5 class="font-weight-semi-bold m-0">Send A Message</h5>
+                </nav>
+            </div>
+        </div>
+    </div>
     <div class="row px-xl-5">
         <div class="col-lg-7 mb-5">
             <div class="contact-form bg-light p-30">
@@ -198,13 +197,15 @@
         <div class="col-lg-5 mb-5">
             <div class="bg-light p-30 mb-30">
                 <iframe style="width: 100%; height: 250px;"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
-                        frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.9311225853014!2d3.3862118146042987!3d6.451211209079429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8fb034e2c0d9%3A0x4da3e4d1c4f54534!2sLocation%20Name!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                    frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+
+                </iframe>
             </div>
             <div class="bg-light p-30 mb-3">
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Decagon Institute</p>
-                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>osazuwa.omosigho@decagon.dev</p>
-                <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+234 809 572 7920</p>
+                <p class="mb-2" style="color: black"><i class="fa fa-map-marker-alt text-primary mr-3" style="color: black"></i>Decagon Institute</p>
+                <p class="mb-2" style="color: black"><i class="fa fa-envelope text-primary mr-3" style="color: black"></i>osazuwa.omosigho@decagon.dev</p>
+                <p class="mb-2" style="color: black"><i class="fa fa-phone-alt text-primary mr-3" style="color: black"></i>+234 809 572 7920</p>
             </div>
         </div>
     </div>

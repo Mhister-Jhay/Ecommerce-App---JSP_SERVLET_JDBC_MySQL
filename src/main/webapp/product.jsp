@@ -228,7 +228,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <% int count1 = 0; for(int i = 0; i < productList.size(); i++) {
+            <%for(int i = 0; i < productList.size(); i++) {
                 if(productList.get(i).getCategory() == 2){%>
             <div  class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light2 mb-4">

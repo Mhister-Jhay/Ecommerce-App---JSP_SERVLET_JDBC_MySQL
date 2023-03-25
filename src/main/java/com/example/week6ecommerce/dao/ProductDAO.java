@@ -37,19 +37,6 @@ public class ProductDAO {
         return resultSet;
     }
 
-    public ResultSet selectAProduct(int productID){
-        ResultSet resultSet = null;
-        try {
-            Connection connection = dbConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(queries.getSelectProduct());
-            preparedStatement.setInt(1,productID);
-            resultSet = preparedStatement.executeQuery();
-        } catch (SQLException e) {
-            System.out.println("Exception in login: " + e.getMessage());
-        }
-        return resultSet;
-    }
-
     public boolean orderProduct(String orderID, int customerID, int productID, int quantity, double amount, Timestamp orderDate) {
         boolean isOrderSuccessful = false;
         try {
