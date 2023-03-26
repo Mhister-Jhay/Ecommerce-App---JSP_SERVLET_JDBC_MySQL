@@ -202,7 +202,7 @@
                       <i class="fa fa-minus"></i>
                     </button>
                   </div>
-                  <input type="text" class="form-control form-control-sm bg-secondary2 border-0 text-center" value="<%=cart.getQuantity()%>">
+                  <span type="text" class="form-control form-control-sm bg-secondary2 border-0 text-center"><%=cart.getQuantity()%></span>
                   <div class="input-group-append">
                     <button type="button" class="btn btn-sm btn-primary btn-plus" onclick="setSubmitType('plus', '<%=counter%>'); submitForm('<%=counter%>');">
                       <i class="fa fa-plus"></i>
