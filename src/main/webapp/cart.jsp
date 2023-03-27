@@ -12,8 +12,6 @@
   <meta content="Free HTML Templates" name="keywords">
   <meta content="Free HTML Templates" name="description">
 
-  <!-- Favicon -->
-  <link href="img/favicon.ico" rel="icon">
 
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -159,7 +157,7 @@
   <div class="row px-xl-5">
     <div class="col-12">
       <nav class="breadcrumb align-items-center bg-light mb-30">
-        <a href="viewCart"><h5 class="font-weight-semi-bold m-0">My Shopping Cart</h5></a>
+        <a href=""><h5 class="font-weight-semi-bold m-0">My Shopping Cart</h5></a>
       </nav>
     </div>
   </div>
@@ -183,7 +181,7 @@
         </tr>
         </thead>
         <tbody class="align-middle">
-        <% int counter = 0;double cartTotal = 0.0; double total = 0.0; double shipping = 0.0;
+        <% int counter = 0;double cartTotal; double total = 0.0; double shipping = 0.0;
           for(Cart cart: cartList) {%>
 
         <tr>
@@ -224,7 +222,7 @@
               }
 
               function submitForm(formId) {
-                var form = document.getElementById("myForm"+formId);
+                let form = document.getElementById("myForm"+formId);
                 form.method = "post";
                 form.submit();
               }
@@ -350,7 +348,6 @@
 
 <!-- Contact Javascript File -->
 <script src="mail/jqBootstrapValidation.min.js"></script>
-<script src="mail/contact.js"></script>
 <%--<!-- Template Javascript -->--%>
 <script src="js/main.js"></script>
 </body>

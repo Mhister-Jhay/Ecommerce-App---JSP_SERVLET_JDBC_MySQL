@@ -32,7 +32,7 @@ public class AddToCartServlet extends HttpServlet {
         RequestDispatcher requestDispatcher;
 
         try {
-            boolean isAddedToCart = cartDAO.addToCart(customerID,productID,quantity);
+            cartDAO.addToCart(customerID,productID,quantity);
             String prevPage = request.getParameter("prevPage");
             if(prevPage.equals("product.jsp")){
                 productServlet.doGet(request,response);

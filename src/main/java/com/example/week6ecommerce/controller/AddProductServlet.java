@@ -1,17 +1,12 @@
 package com.example.week6ecommerce.controller;
 
 import com.example.week6ecommerce.dao.AdminDAO;
-import com.example.week6ecommerce.dao.ProductDAO;
-import com.example.week6ecommerce.model.Product;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @WebServlet(name = "AddProductServlet", value = "/AddProduct")
 public class AddProductServlet extends HttpServlet {
@@ -27,9 +22,9 @@ public class AddProductServlet extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String image = request.getParameter("image");
         String prevPage = request.getParameter("prevPage");
-        RequestDispatcher requestDispatcher = null;
+        RequestDispatcher requestDispatcher;
         try{
-            boolean isProductAdded = adminDAO.createNewProduct(name,categoryID,price,quantity,image);
+            adminDAO.createNewProduct(name,categoryID,price,quantity,image);
             if(prevPage == null){
                 requestDispatcher = request.getRequestDispatcher("addProduct.jsp");
             }else{

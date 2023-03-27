@@ -1,11 +1,9 @@
 package com.example.week6ecommerce.controller;
 
 import com.example.week6ecommerce.dao.WishlistDAO;
-import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-import java.io.IOException;
 
 @WebServlet(name = "RemoveFromWishlistServlet", value = "/removeFromWishlist")
 public class RemoveFromWishlistServlet extends HttpServlet {

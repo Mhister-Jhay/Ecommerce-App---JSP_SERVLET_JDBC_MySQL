@@ -3,7 +3,6 @@ package com.example.week6ecommerce.dao;
 import com.example.week6ecommerce.connection.DBConnection;
 import com.example.week6ecommerce.constant.Queries;
 import com.example.week6ecommerce.model.Cart;
-import jakarta.servlet.RequestDispatcher;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,8 +10,8 @@ import java.util.List;
 
 public class CartDAO {
 
-    private DBConnection dbConnection;
-    private Queries queries;
+    private final DBConnection dbConnection;
+    private final Queries queries;
 
     public CartDAO() {
         this.dbConnection = new DBConnection();
@@ -39,7 +38,7 @@ public class CartDAO {
 
     public boolean addToCart(int customerID, int productID, int quantity){
         boolean isAddedToCart = false;
-        int newQuantity = 0;
+        int newQuantity;
         try {
             int oldQuantity =getCartProductQuantity(productID,customerID);
             if(oldQuantity == 0){
@@ -49,7 +48,6 @@ public class CartDAO {
                 preparedStatement.setInt(2, productID);
                 preparedStatement.setInt(3,quantity);
                 preparedStatement.executeUpdate();
-                isAddedToCart = true;
             } else{
                 newQuantity = oldQuantity + quantity;
                 Connection connection = dbConnection.getConnection();
@@ -58,8 +56,8 @@ public class CartDAO {
                 preparedStatement.setInt(2,productID);
                 preparedStatement.setInt(3, customerID);
                 preparedStatement.executeUpdate();
-                isAddedToCart = true;
             }
+            isAddedToCart = true;
         } catch (SQLException e) {
             System.out.println("Exception in adding to cart: " + e.getMessage());
         }
@@ -80,7 +78,9 @@ public class CartDAO {
         }
 
         try {
-            while (resultSet.next()) {
+            while (true) {
+                assert resultSet != null;
+                if (!resultSet.next()) break;
                 cartList.add(new Cart(resultSet.getInt("id"),
                         resultSet.getString("image"),
                         resultSet.getString("name"),
@@ -112,7 +112,6 @@ public class CartDAO {
     public boolean updateCartQuantity(int quantity, int product_id, int customer_id){
         boolean isQuantityUpdated = false;
         int oldQuantity = getCartProductQuantity(product_id,customer_id);
-        System.out.println(oldQuantity);
         int newQuantity = oldQuantity +quantity;
         try {
             Connection connection = dbConnection.getConnection();
@@ -124,7 +123,6 @@ public class CartDAO {
             isQuantityUpdated = true;
             if(newQuantity<=0){
                 removeFromCart(product_id,customer_id);
-                System.out.println("Successfully removed");
             }
         } catch (SQLException e) {
             System.out.println("Exception in updating cart: " + e.getMessage());

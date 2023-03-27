@@ -26,8 +26,8 @@ public class DeleteProductServlet extends HttpServlet {
         int product_id = Integer.parseInt(request.getParameter("product_id"));
         String prevPage = request.getParameter("prevPage");
         try{
-            boolean isDeleted = adminDAO.deleteProduct(product_id);
-            RequestDispatcher requestDispatcher = null;
+            adminDAO.deleteProduct(product_id);
+            RequestDispatcher requestDispatcher;
                     ResultSet resultSet = productDAO.getAllProducts();
                     List<Product> productList = new ArrayList<>();
                     while(resultSet.next()){

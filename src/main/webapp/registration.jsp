@@ -35,27 +35,27 @@
 							</div>
 							<div class="form-group">
 								<i class="login__icon fas fa-user"></i>
-								<input type="text" class="login__input" name="first_name" id="first_name" placeholder="first name" />
+								<label for="first_name"></label><input type="text" class="login__input" name="first_name" id="first_name" placeholder="first name" />
 							</div>
 							<div class="form-group">
 								<i class="login__icon fas fa-user"></i>
-								<input type="text" class="login__input" name="last_name" id="last_name" placeholder="last name" />
+								<label for="last_name"></label><input type="text" class="login__input" name="last_name" id="last_name" placeholder="last name" />
 							</div>
 							<div class="form-group">
 								<i class="login__icon fas fa-user"></i>
-								<input type="text" class="login__input" name="phone_number" id="phone_number" placeholder="Phone Number" />
+								<label for="phone_number"></label><input type="text" class="login__input" name="phone_number" id="phone_number" placeholder="Phone Number" />
 							</div>
 							<div class="form-group">
 								<i class="login__icon fas fa-user"></i>
-								<input type="email" class="login__input" name="email" id="email" placeholder="Email" />
+								<label for="email"></label><input type="email" class="login__input" name="email" id="email" placeholder="Email" />
 							</div>
 							<div class="form-group">
 								<i class="login__icon fas fa-lock"></i>
-								<input type="password" class="login__input" name="password" id="password" placeholder="Password" />
+								<label for="password"></label><input type="password" class="login__input" name="password" id="password" placeholder="Password" />
 							</div>
 							<div class="form-group">
 								<i class="login__icon fas fa-lock"></i>
-								<input type="password" class="login__input" name="re_password" id="re_password" placeholder="Repeat password" />
+								<label for="re_password"></label><input type="password" class="login__input" name="re_password" id="re_password" placeholder="Repeat password" />
 							</div>
 								<button class="button login__submit">
 									<span class="button__text">Register</span>
@@ -67,11 +67,10 @@
 		</section>
 
 		<!-- JS -->
-		<script src="js/jquery.min.js"></script>
 		<script src="js/main.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
-		var status = document.getElementById("status").value;
+		let status = document.getElementById("status").value;
 		if (status === "success") {
 			Swal.fire(
 					'Welcome Onboard',
@@ -85,7 +84,7 @@
 					'error'
 			)
 		}
-		var status1 = document.getElementById("status1").value;
+		let status1 = document.getElementById("status1").value;
 		if (status1 === "failed") {
 			Swal.fire(
 					'Failed registration',

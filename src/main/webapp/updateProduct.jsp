@@ -12,9 +12,6 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -130,35 +127,51 @@
                 </tr>
                 </thead>
                 <tbody class="align-middle">
-                <%for(int i = 0; i < productList.size(); i++) {
-                    if(productList.get(i).getCategory() == 1){%>
+                <%
+                    for (Product product : productList) {
+                        if (product.getCategory() == 1) {
+                %>
                 <tr>
-                    <td class="align-middle"><%=productList.get(i).getId()%></td>
-                    <td class="align-middle"><img src="img/<%=productList.get(i).getImage()%>" alt="" style="width: 50px;"> <%=productList.get(i).getName()%></td>
-                    <td class="align-middle"><%=productList.get(i).getPrice()%></td>
+                    <td class="align-middle"><%=product.getId()%>
+                    </td>
+                    <td class="align-middle"><img src="img/<%=product.getImage()%>" alt=""
+                                                  style="width: 50px;"> <%=product.getName()%>
+                    </td>
+                    <td class="align-middle"><%=product.getPrice()%>
+                    </td>
                     <form action="UpdateProduct" method="post">
                         <td class="align-middle">
-                            <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                            <input type="hidden" name="product_id" value="<%=product.getId()%>">
                             <input type="hidden" name="quantity" value="0">
-                            <input type="number" name="price" placeholder="Enter Price" class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            <label>
+                                <input type="number" name="price" placeholder="Enter Price"
+                                       class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            </label>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-sm btn-primary">Update Price</button>
                             </div>
                         </td>
                     </form>
-                    <td class="align-middle"><%=productList.get(i).getQuantity()%></td>
+                    <td class="align-middle"><%=product.getQuantity()%>
+                    </td>
                     <form action="UpdateProduct" method="post">
                         <td class="align-middle">
-                            <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                            <input type="hidden" name="product_id" value="<%=product.getId()%>">
                             <input type="hidden" name="price" value="0.0">
-                            <input type="number" name="quantity" placeholder="Enter Quantity" class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            <label>
+                                <input type="number" name="quantity" placeholder="Enter Quantity"
+                                       class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            </label>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-sm btn-primary">Update Quantity</button>
                             </div>
                         </td>
                     </form>
                 </tr>
-                <%}}%>
+                <%
+                        }
+                    }
+                %>
                 </tbody>
             </table>
         </div>
@@ -188,35 +201,51 @@
                 </tr>
                 </thead>
                 <tbody class="align-middle">
-                <%for(int i = 0; i < productList.size(); i++) {
-                    if(productList.get(i).getCategory() == 2){%>
+                <%
+                    for (Product product : productList) {
+                        if (product.getCategory() == 2) {
+                %>
                 <tr>
-                    <td class="align-middle"><%=productList.get(i).getId()%></td>
-                    <td class="align-middle"><img src="img/<%=productList.get(i).getImage()%>" alt="" style="width: 50px;"> <%=productList.get(i).getName()%></td>
-                    <td class="align-middle"><%=productList.get(i).getPrice()%></td>
+                    <td class="align-middle"><%=product.getId()%>
+                    </td>
+                    <td class="align-middle"><img src="img/<%=product.getImage()%>" alt=""
+                                                  style="width: 50px;"> <%=product.getName()%>
+                    </td>
+                    <td class="align-middle"><%=product.getPrice()%>
+                    </td>
                     <form action="UpdateProduct" method="post">
                         <td class="align-middle">
-                            <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                            <input type="hidden" name="product_id" value="<%=product.getId()%>">
                             <input type="hidden" name="quantity" value="0">
-                            <input type="number" name="price" placeholder="Enter Price" class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            <label>
+                                <input type="number" name="price" placeholder="Enter Price"
+                                       class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            </label>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-sm btn-primary">Update Price</button>
                             </div>
                         </td>
                     </form>
-                    <td class="align-middle"><%=productList.get(i).getQuantity()%></td>
+                    <td class="align-middle"><%=product.getQuantity()%>
+                    </td>
                     <form action="UpdateProduct" method="post">
                         <td class="align-middle">
-                            <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                            <input type="hidden" name="product_id" value="<%=product.getId()%>">
                             <input type="hidden" name="price" value="0.0">
-                            <input type="number" name="quantity" placeholder="Enter Quantity" class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            <label>
+                                <input type="number" name="quantity" placeholder="Enter Quantity"
+                                       class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            </label>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-sm btn-primary">Update Quantity</button>
                             </div>
                         </td>
                     </form>
                 </tr>
-                <%}}%>
+                <%
+                        }
+                    }
+                %>
                 </tbody>
             </table>
         </div>
@@ -245,37 +274,53 @@
                 </tr>
                 </thead>
                 <tbody class="align-middle">
-                <%for(int i = 0; i < productList.size(); i++) {
-                    if(productList.get(i).getCategory() == 1){%>
+                <%
+                    for (Product product : productList) {
+                        if (product.getCategory() == 1) {
+                %>
                 <tr>
-                    <td class="align-middle"><%=productList.get(i).getId()%></td>
-                    <td class="align-middle"><img src="img/<%=productList.get(i).getImage()%>" alt="" style="width: 50px;"> <%=productList.get(i).getName()%></td>
-                    <td class="align-middle"><%=productList.get(i).getPrice()%></td>
+                    <td class="align-middle"><%=product.getId()%>
+                    </td>
+                    <td class="align-middle"><img src="img/<%=product.getImage()%>" alt=""
+                                                  style="width: 50px;"> <%=product.getName()%>
+                    </td>
+                    <td class="align-middle"><%=product.getPrice()%>
+                    </td>
                     <form action="UpdateProduct" method="post">
                         <td class="align-middle">
-                            <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                            <input type="hidden" name="product_id" value="<%=product.getId()%>">
                             <input type="hidden" name="quantity" value="0">
                             <input type="hidden" name="prevPage" value="updateProduct.jsp">
-                            <input type="number" name="price" placeholder="Enter Price" class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            <label>
+                                <input type="number" name="price" placeholder="Enter Price"
+                                       class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            </label>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-sm btn-primary">Update Price</button>
                             </div>
                         </td>
                     </form>
-                    <td class="align-middle"><%=productList.get(i).getQuantity()%></td>
+                    <td class="align-middle"><%=product.getQuantity()%>
+                    </td>
                     <form action="UpdateProduct" method="post">
                         <td class="align-middle">
-                            <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                            <input type="hidden" name="product_id" value="<%=product.getId()%>">
                             <input type="hidden" name="price" value="0.0">
                             <input type="hidden" name="prevPage" value="updateProduct.jsp">
-                            <input type="number" name="quantity" placeholder="Enter Quantity" class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            <label>
+                                <input type="number" name="quantity" placeholder="Enter Quantity"
+                                       class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            </label>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-sm btn-primary">Update Quantity</button>
                             </div>
                         </td>
                     </form>
                 </tr>
-                <%}}%>
+                <%
+                        }
+                    }
+                %>
                 </tbody>
             </table>
         </div>
@@ -294,7 +339,6 @@
 
 <!-- Contact Javascript File -->
 <script src="mail/jqBootstrapValidation.min.js"></script>
-<script src="mail/contact.js"></script>
 <%--<!-- Template Javascript -->--%>
 <script src="js/main.js"></script>
 </body>

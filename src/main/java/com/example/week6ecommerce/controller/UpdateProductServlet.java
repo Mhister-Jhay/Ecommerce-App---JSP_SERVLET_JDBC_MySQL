@@ -32,12 +32,12 @@ public class UpdateProductServlet extends HttpServlet {
         String prevPage = request.getParameter("prevPage");
         try{
             if(price == 0.0){
-                boolean isQuantityUpdated = adminDAO.updateProductQuantity(product_id,quantity);
+               adminDAO.updateProductQuantity(product_id,quantity);
             }else if(quantity == 0){
-                boolean isPriceUpdated = adminDAO.updateProductPrice(product_id,price);
+               adminDAO.updateProductPrice(product_id,price);
             }
-            RequestDispatcher requestDispatcher = null;
-            ResultSet resultSet = null;
+            RequestDispatcher requestDispatcher;
+            ResultSet resultSet;
             List<Product> productList = new ArrayList<>();
             if(prevPage == null){
                 resultSet = productDAO.getAllProducts();

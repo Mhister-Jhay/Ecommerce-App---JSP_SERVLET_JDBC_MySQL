@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.UUID;
 
 
 @EqualsAndHashCode(callSuper = true)

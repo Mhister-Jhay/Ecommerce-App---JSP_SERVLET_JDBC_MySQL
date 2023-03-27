@@ -12,8 +12,6 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -165,38 +163,47 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <%for(int i = 0; i < wishList.size(); i++) {%>
-            <div  class="col-lg-3 col-md-4 col-sm-6 pb-1">
+            <%for (Product product : wishList) {%>
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light2 mb-4">
                     <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/<%=wishList.get(i).getImage()%>" alt="">
+                        <img class="img-fluid w-100" src="img/<%=product.getImage()%>" alt="">
                         <div class="product-action">
                             <% if (session.getAttribute("logged_in") != null) { %>
                             <form method="post" action="WishlistToCart" class="btn btn-outline-dark btn-square">
-                                <input type="hidden" name="customer_id" value="<%=session.getAttribute("customer_id")%>">
-                                <input type="hidden" name="product_id" value="<%=wishList.get(i).getId()%>">
+                                <input type="hidden" name="customer_id"
+                                       value="<%=session.getAttribute("customer_id")%>">
+                                <input type="hidden" name="product_id" value="<%=product.getId()%>">
                                 <input type="hidden" name="cart_id" value="<%=session.getAttribute("cart_id")%>">
-                                <label style= "width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;" for="addToCartBtn<%=wishList.get(i).getId()%>">
+                                <label style="width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;"
+                                       for="addToCartBtn<%=product.getId()%>">
                                     <i class="fa fa-shopping-cart"></i>
                                 </label>
-                                <button type="submit" style="display:none" name="sub" id="addToCartBtn<%=wishList.get(i).getId()%>">Add to cart</button>
+                                <button type="submit" style="display:none" name="sub"
+                                        id="addToCartBtn<%=product.getId()%>">Add to cart
+                                </button>
                             </form>
                             <form method="post" action="removeFromWishlist" class="btn btn-outline-dark btn-square">
-                                <input type="hidden" name="customer_id" value="<%=session.getAttribute("customer_id")%>">
-                                <input type="hidden" name="product_id" value="<%=wishList.get(i).getId()%>">
+                                <input type="hidden" name="customer_id"
+                                       value="<%=session.getAttribute("customer_id")%>">
+                                <input type="hidden" name="product_id" value="<%=product.getId()%>">
                                 <input type="hidden" name="order_id" value="<%=session.getAttribute("order_id")%>">
-                                <label style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;" for="submit<%=wishList.get(i).getId()%>">
+                                <label style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"
+                                       for="submit<%=product.getId()%>">
                                     <i class="fas fa-trash-alt"></i>
                                 </label>
-                                <button type="submit" style="display:none" name="sub" id="submit<%=wishList.get(i).getId()%>"></button>
+                                <button type="submit" style="display:none" name="sub"
+                                        id="submit<%=product.getId()%>"></button>
                             </form>
                             <% } %>
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <a class="h5 text-decoration-none text-truncate" href=""><%= wishList.get(i).getName() %></a>
+                        <a class="h5 text-decoration-none text-truncate" href=""><%= product.getName() %>
+                        </a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h6>₦<%= wishList.get(i).getPrice() %></h6>
+                            <h6>₦<%= product.getPrice() %>
+                            </h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary2 mr-1"></small>
@@ -297,7 +304,7 @@
 
 <!-- Contact Javascript File -->
 <script src="mail/jqBootstrapValidation.min.js"></script>
-<script src="mail/contact.js"></script>
+
 <%--<!-- Template Javascript -->--%>
 <script src="js/main.js"></script>
 </body>

@@ -23,7 +23,7 @@ public class AddToWishlistServlet extends HttpServlet {
         RequestDispatcher requestDispatcher;
 
         try {
-            boolean isAddedToWishlist = wishlistDAO.addToWishList(customerID,productID);
+            wishlistDAO.addToWishList(customerID,productID);
             String prevPage = request.getParameter("prevPage");
             if(prevPage.equals("product.jsp")){
                 productServlet.doGet(request,response);

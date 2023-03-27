@@ -10,14 +10,14 @@ import java.util.List;
 
 public class WishlistDAO {
 
-    private DBConnection dbConnection;
-    private Queries queries;
+    private final DBConnection dbConnection;
+    private final Queries queries;
 
     public WishlistDAO() {
         this.dbConnection = new DBConnection();
         this.queries = new Queries();
     }
-    public boolean addToWishList(int customerID, int productID){
+    public void addToWishList(int customerID, int productID){
         boolean isAddedToWishlist = false;
         List<Product> wishlist = viewWishlist(customerID);
         for(Product wish: wishlist) {
@@ -34,10 +34,9 @@ public class WishlistDAO {
                 preparedStatement.setInt(2, productID);
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
-                System.out.println("Exception in login: " + e.getMessage());
+                System.out.println("Exception in adding to wishlist: " + e.getMessage());
             }
         }
-        return isAddedToWishlist;
     }
 
     public boolean removeFromWishlist(int productID, int customerID){
@@ -50,14 +49,14 @@ public class WishlistDAO {
             preparedStatement.executeUpdate();
             isRemovedFromWishlist = true;
         } catch (SQLException e) {
-            System.out.println("Exception in login: " + e.getMessage());
+            System.out.println("Exception in removing from wishlist: " + e.getMessage());
         }
         return isRemovedFromWishlist;
     }
 
     public List<Product> viewWishlist(int customer_id){
         List<Product> wishlist = new ArrayList<>();
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         try{
             Connection connection = dbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(queries.getViewWishList());
@@ -72,7 +71,7 @@ public class WishlistDAO {
                     resultSet.getString("image")));
         }
         }catch(SQLException e){
-            System.out.println("Exception in getting all customers: "+e.getMessage());
+            System.out.println("Exception in viewing wishlist: "+e.getMessage());
         }
         return wishlist;
     }

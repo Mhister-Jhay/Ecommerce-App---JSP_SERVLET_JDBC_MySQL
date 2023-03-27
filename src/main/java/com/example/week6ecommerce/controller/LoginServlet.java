@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         customer.setEmail(request.getParameter("email"));
         customer.setPassword(request.getParameter("password"));
         HttpSession session = request.getSession();
-        RequestDispatcher requestDispatcher = null;
+        RequestDispatcher requestDispatcher;
         try{
             ResultSet resultSet = customerDAO.loginCustomer();
             if(resultSet.next()){

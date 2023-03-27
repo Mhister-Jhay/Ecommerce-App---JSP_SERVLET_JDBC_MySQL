@@ -11,8 +11,6 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -180,10 +178,10 @@
                 </tr>
                 </thead>
                 <tbody class="align-middle">
-                <%double total = 0.0; double shipping = 0.0; double orderTotal = 0.0;for(Order order: orderList) {
+                <%double total = 0.0; double shipping; double orderTotal;for(Order order: orderList) {
                     orderTotal = order.getQuantity()*order.getPrice();
                     total += orderTotal;
-                    shipping = total * 0.01;%>
+                %>
                 <tr>
                     <td class="align-middle"><%=order.getProduct_id()%></td>
                     <td class="align-middle"><img src="img/<%=order.getImage()%>" alt="" style="width: 50px;"> <%=order.getName()%></td>
@@ -206,7 +204,7 @@
                     </div>
                     <div class="d-flex justify-content-between">
                         <h6 class="font-weight-medium">Shipping</h6>
-                        <%shipping = total * 0.05;%>
+                        <%shipping = total * 0.01;%>
                         <h6 class="font-weight-medium"><%=shipping%></h6>
                     </div>
                 </div>
@@ -305,7 +303,6 @@
 
 <!-- Contact Javascript File -->
 <script src="mail/jqBootstrapValidation.min.js"></script>
-<script src="mail/contact.js"></script>
 <%--<!-- Template Javascript -->--%>
 <script src="js/main.js"></script>
 </body>

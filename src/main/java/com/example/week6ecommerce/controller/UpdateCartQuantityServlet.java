@@ -22,19 +22,23 @@ public class UpdateCartQuantityServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response){
         int product_id = Integer.parseInt(request.getParameter("product_id"));
         int customer_id = Integer.parseInt(request.getParameter("customer_id"));
-        int quantity = 0;
+        int quantity;
         String submit_type = request.getParameter("submit_type");
         boolean isQuantityUpdated = false;
         try{
             if(submit_type != null){
-                if(submit_type.equals("minus")){
-                    quantity = -1;
-                    isQuantityUpdated = cartDAO.updateCartQuantity(quantity,product_id,customer_id);
-                }else if(submit_type.equals("plus")){
-                    quantity = 1;
-                    isQuantityUpdated = cartDAO.updateCartQuantity(quantity,product_id,customer_id);
-                }else if (submit_type.equals("delete")){
-                    isQuantityUpdated = cartDAO.removeFromCart(product_id,customer_id);
+                switch (submit_type) {
+                    case "minus":
+                        quantity = -1;
+                        isQuantityUpdated = cartDAO.updateCartQuantity(quantity, product_id, customer_id);
+                        break;
+                    case "plus":
+                        quantity = 1;
+                        isQuantityUpdated = cartDAO.updateCartQuantity(quantity, product_id, customer_id);
+                        break;
+                    case "delete":
+                        isQuantityUpdated = cartDAO.removeFromCart(product_id, customer_id);
+                        break;
                 }
             }
             if(isQuantityUpdated){

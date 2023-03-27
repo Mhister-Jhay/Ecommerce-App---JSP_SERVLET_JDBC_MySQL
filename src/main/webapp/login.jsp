@@ -38,11 +38,15 @@
                 </div>
                 <div class="login__field">
                     <i class="login__icon fas fa-user"></i>
-                    <input type="email" name="email" class="login__input" placeholder="Email">
+                    <label>
+                        <input type="email" name="email" class="login__input" placeholder="Email">
+                    </label>
                 </div>
                 <div class="login__field">
                     <i class="login__icon fas fa-lock"></i>
-                    <input type="password" name="password" class="login__input" placeholder="Password">
+                    <label>
+                        <input type="password" name="password" class="login__input" placeholder="Password">
+                    </label>
                 </div>
                 <button class="button login__submit">
                     <span class="button__text">Log In Now</span>
@@ -60,7 +64,7 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    var status = document.getElementById("status").value;
+    let status = document.getElementById("status").value;
     if (status === "failed") {
         Swal.fire(
             'Login Failed',

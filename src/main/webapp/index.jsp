@@ -38,8 +38,6 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -190,7 +188,7 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item position-relative active" style="height: 430px;">
-                        <img class="position-absolute w-100 h-100" src="img/carousel-1.jpg" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100" src="img/carousel-1.jpg" style="object-fit: cover;" alt="">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
                                 <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Groceries</h1>
@@ -199,7 +197,7 @@
                         </div>
                     </div>
                     <div class="carousel-item position-relative" style="height: 430px;">
-                        <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover;" alt="">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
                                 <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Fashion</h1>
@@ -208,7 +206,7 @@
                         </div>
                     </div>
                     <div class="carousel-item position-relative" style="height: 430px;">
-                        <img class="position-absolute w-100 h-100" src="img/carousel-3.jpg" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100" src="img/carousel-3.jpg" style="object-fit: cover;" alt="">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
                                 <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Electronics and Mobile</h1>
@@ -335,44 +333,54 @@
         </div>
     </div>
         <div class="row justify-content-center">
-            <% int count = 0; for(int i = 0; i < productList.size(); i++) {
-                if(productList.get(i).getCategory() == 1){%>
-            <div  class="col-lg-3 col-md-4 col-sm-6 pb-1">
+            <% int count = 0;
+                for (Product product : productList) {
+                    if (product.getCategory() == 1) {%>
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light2 mb-4">
                     <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/<%=productList.get(i).getImage()%>" alt="">
+                        <img class="img-fluid w-100" src="img/<%=product.getImage()%>" alt="">
                         <div class="product-action">
                             <% if (session.getAttribute("logged_in") != null) { %>
                             <form method="post" action="addToCart" class="btn btn-outline-dark btn-square">
-                                <input type="hidden" name="customer_id" value="<%=session.getAttribute("customer_id")%>">
-                                <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                                <input type="hidden" name="customer_id"
+                                       value="<%=session.getAttribute("customer_id")%>">
+                                <input type="hidden" name="product_id" value="<%=product.getId()%>">
                                 <input type="hidden" name="prevPage" value="index.jsp">
-                                <label style= "width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;" for="addToCartBtn<%=productList.get(i).getId()%>">
+                                <label style="width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;"
+                                       for="addToCartBtn<%=product.getId()%>">
                                     <i class="fa fa-shopping-cart"></i>
                                 </label>
-                                <button type="submit" style="display:none" name="sub" id="addToCartBtn<%=productList.get(i).getId()%>"></button>
+                                <button type="submit" style="display:none" name="sub"
+                                        id="addToCartBtn<%=product.getId()%>"></button>
                             </form>
                             <form method="post" action="AddToWishlist" class="btn btn-outline-dark btn-square">
-                                <input type="hidden" name="customer_id" value="<%=session.getAttribute("customer_id")%>">
-                                <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                                <input type="hidden" name="customer_id"
+                                       value="<%=session.getAttribute("customer_id")%>">
+                                <input type="hidden" name="product_id" value="<%=product.getId()%>">
                                 <input type="hidden" name="prevPage" value="index.jsp">
-                                <label style= "width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;" for="submit<%=productList.get(i).getId()%>">
+                                <label style="width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;"
+                                       for="submit<%=product.getId()%>">
                                     <i class="far fa-heart"></i>
                                 </label>
-                                <button type="submit" style="display:none" name="sub" id="submit<%=productList.get(i).getId()%>"></button>
+                                <button type="submit" style="display:none" name="sub"
+                                        id="submit<%=product.getId()%>"></button>
                             </form>
                             <% } else {%>
                             <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href="login.jsp"><i class="fa fa-shopping-cart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href="login.jsp"><i
+                                        class="fa fa-shopping-cart"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href="login.jsp"><i class="far fa-heart"></i></a>
                             </div>
                             <% } %>
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <h5 text-decoration-none text-truncate style="color: black"><%= productList.get(i).getName() %></h5>
+                        <h5 text-decoration-none text-truncate style="color: black"><%= product.getName() %>
+                        </h5>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h6 style="color: black">N <%= productList.get(i).getPrice() %></h6>
+                            <h6 style="color: black">N <%= product.getPrice() %>
+                            </h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary2 mr-1"></small>
@@ -385,7 +393,14 @@
                     </div>
                 </div>
             </div>
-            <%count++;if(count ==3){break;}}}%>
+            <%
+                        count++;
+                        if (count == 3) {
+                            break;
+                        }
+                    }
+                }
+            %>
         </div>
 
 
@@ -399,44 +414,55 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <% int count1 = 0; for(int i = 0; i < productList.size(); i++) {
-                if(productList.get(i).getCategory() == 2){%>
-            <div  class="col-lg-3 col-md-4 col-sm-6 pb-1">
+            <% int count1 = 0;
+                for (Product product : productList) {
+                    if (product.getCategory() == 2) {%>
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light2 mb-4">
                     <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/<%=productList.get(i).getImage()%>" alt="">
+                        <img class="img-fluid w-100" src="img/<%=product.getImage()%>" alt="">
                         <div class="product-action">
                             <% if (session.getAttribute("logged_in") != null) { %>
                             <form method="post" action="addToCart" class="btn btn-outline-dark btn-square">
-                                <input type="hidden" name="customer_id" value="<%=session.getAttribute("customer_id")%>">
-                                <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                                <input type="hidden" name="customer_id"
+                                       value="<%=session.getAttribute("customer_id")%>">
+                                <input type="hidden" name="product_id" value="<%=product.getId()%>">
                                 <input type="hidden" name="prevPage" value="index.jsp">
-                                <label style= "width: 100%;height: 100%; display: flex; justify-content: center; align-items: center; " for="addToCartBtn<%=productList.get(i).getId()%>">
+                                <label style="width: 100%;height: 100%; display: flex; justify-content: center; align-items: center; "
+                                       for="addToCartBtn<%=product.getId()%>">
                                     <i class="fa fa-shopping-cart"></i>
                                 </label>
-                                <button type="submit" style="display:none" name="sub" id="addToCartBtn<%=productList.get(i).getId()%>">Add to cart</button>
+                                <button type="submit" style="display:none" name="sub"
+                                        id="addToCartBtn<%=product.getId()%>">Add to cart
+                                </button>
                             </form>
                             <form method="post" action="AddToWishlist" class="btn btn-outline-dark btn-square">
-                                <input type="hidden" name="customer_id" value="<%=session.getAttribute("customer_id")%>">
-                                <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                                <input type="hidden" name="customer_id"
+                                       value="<%=session.getAttribute("customer_id")%>">
+                                <input type="hidden" name="product_id" value="<%=product.getId()%>">
                                 <input type="hidden" name="prevPage" value="index.jsp">
-                                <label style= "width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;" for="submit<%=productList.get(i).getId()%>">
+                                <label style="width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;"
+                                       for="submit<%=product.getId()%>">
                                     <i class="far fa-heart"></i>
                                 </label>
-                                <button type="submit" style="display:none" name="sub" id="submit<%=productList.get(i).getId()%>"></button>
+                                <button type="submit" style="display:none" name="sub"
+                                        id="submit<%=product.getId()%>"></button>
                             </form>
                             <% } else {%>
                             <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href="login.jsp"><i class="fa fa-shopping-cart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href="login.jsp"><i
+                                        class="fa fa-shopping-cart"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href="login.jsp"><i class="far fa-heart"></i></a>
                             </div>
                             <% } %>
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <h5 text-decoration-none text-truncate style="color: black"><%= productList.get(i).getName() %></h5>
+                        <h5 text-decoration-none text-truncate style="color: black"><%= product.getName() %>
+                        </h5>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h6 style="color: black">N <%= productList.get(i).getPrice() %></h6>
+                            <h6 style="color: black">N <%= product.getPrice() %>
+                            </h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary2 mr-1"></small>
@@ -449,7 +475,14 @@
                     </div>
                 </div>
             </div>
-            <%count1++;if(count1 ==3){break;}}}%>
+            <%
+                        count1++;
+                        if (count1 == 3) {
+                            break;
+                        }
+                    }
+                }
+            %>
         </div>
 
 
@@ -463,44 +496,55 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <% int count2 = 0; for(int i = 0; i < productList.size(); i++) {
-                if(productList.get(i).getCategory() == 3){%>
-            <div  class="col-lg-3 col-md-4 col-sm-6 pb-1">
+            <% int count2 = 0;
+                for (Product product : productList) {
+                    if (product.getCategory() == 3) {%>
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light2 mb-4">
                     <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/<%=productList.get(i).getImage()%>" alt="">
+                        <img class="img-fluid w-100" src="img/<%=product.getImage()%>" alt="">
                         <div class="product-action">
                             <% if (session.getAttribute("logged_in") != null) { %>
                             <form method="post" action="addToCart" class="btn btn-outline-dark btn-square">
-                                <input type="hidden" name="customer_id" value="<%=session.getAttribute("customer_id")%>">
-                                <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                                <input type="hidden" name="customer_id"
+                                       value="<%=session.getAttribute("customer_id")%>">
+                                <input type="hidden" name="product_id" value="<%=product.getId()%>">
                                 <input type="hidden" name="prevPage" value="index.jsp">
-                                <label style= "width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;" for="addToCartBtn<%=productList.get(i).getId()%>">
+                                <label style="width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;"
+                                       for="addToCartBtn<%=product.getId()%>">
                                     <i class="fa fa-shopping-cart"></i>
                                 </label>
-                                <button type="submit" style="display:none" name="sub" id="addToCartBtn<%=productList.get(i).getId()%>">Add to cart</button>
+                                <button type="submit" style="display:none" name="sub"
+                                        id="addToCartBtn<%=product.getId()%>">Add to cart
+                                </button>
                             </form>
                             <form method="post" action="AddToWishlist" class="btn btn-outline-dark btn-square">
-                                <input type="hidden" name="customer_id" value="<%=session.getAttribute("customer_id")%>">
-                                <input type="hidden" name="product_id" value="<%=productList.get(i).getId()%>">
+                                <input type="hidden" name="customer_id"
+                                       value="<%=session.getAttribute("customer_id")%>">
+                                <input type="hidden" name="product_id" value="<%=product.getId()%>">
                                 <input type="hidden" name="prevPage" value="index.jsp">
-                                <label style= "width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;" for="submit<%=productList.get(i).getId()%>">
+                                <label style="width: 100%;height: 100%; display: flex; justify-content: center; align-items: center;"
+                                       for="submit<%=product.getId()%>">
                                     <i class="far fa-heart"></i>
                                 </label>
-                                <button type="submit" style="display:none" name="sub" id="submit<%=productList.get(i).getId()%>"></button>
+                                <button type="submit" style="display:none" name="sub"
+                                        id="submit<%=product.getId()%>"></button>
                             </form>
                             <% } else {%>
                             <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href="login.jsp"><i class="fa fa-shopping-cart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href="login.jsp"><i
+                                        class="fa fa-shopping-cart"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href="login.jsp"><i class="far fa-heart"></i></a>
                             </div>
                             <% } %>
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <h5 text-decoration-none text-truncate style="color: black"><%= productList.get(i).getName() %></h5>
+                        <h5 text-decoration-none text-truncate style="color: black"><%= product.getName() %>
+                        </h5>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h6 style="color: black">N <%= productList.get(i).getPrice() %></h6>
+                            <h6 style="color: black">N <%= product.getPrice() %>
+                            </h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary2 mr-1"></small>
@@ -513,7 +557,14 @@
                     </div>
                 </div>
             </div>
-            <%count2++;if(count2 ==3){break;}}}%>
+            <%
+                        count2++;
+                        if (count2 == 3) {
+                            break;
+                        }
+                    }
+                }
+            %>
         </div>
     </div>
 </div>
@@ -630,7 +681,6 @@
 
 <!-- Contact Javascript File -->
 <script src="mail/jqBootstrapValidation.min.js"></script>
-<script src="mail/contact.js"></script>
 <%--<!-- Template Javascript -->--%>
 <script src="js/main.js"></script>
 </body>

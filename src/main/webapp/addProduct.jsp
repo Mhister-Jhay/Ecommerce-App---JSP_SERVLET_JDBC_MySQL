@@ -8,8 +8,6 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -130,19 +128,29 @@
                 <form method="post" action="AddProduct">
                     <tr>
                         <td>
-                            <input type="text" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="name" placeholder="Product Name">
+                            <label>
+                                <input type="text" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="name" placeholder="Product Name">
+                            </label>
                         </td>
                         <td>
-                            <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="category_id" placeholder="Category">
+                            <label>
+                                <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="category_id" placeholder="Category">
+                            </label>
                         </td>
                         <td>
-                            <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="price" placeholder="Price">
+                            <label>
+                                <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="price" placeholder="Price">
+                            </label>
                         </td>
                         <td>
-                            <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="quantity" placeholder="Quantity">
+                            <label>
+                                <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="quantity" placeholder="Quantity">
+                            </label>
                         </td>
                         <td>
-                            <input type="text" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="image" placeholder="Image">
+                            <label>
+                                <input type="text" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="image" placeholder="Image">
+                            </label>
                         </td>
                         <td>
                             <button type="submit" class="btn btn-sm btn-primary">Add Product</button>

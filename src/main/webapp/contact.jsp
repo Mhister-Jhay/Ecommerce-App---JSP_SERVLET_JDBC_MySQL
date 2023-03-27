@@ -9,8 +9,6 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -170,24 +168,24 @@
                 <div id="success"></div>
                 <form name="sentMessage" id="contactForm" novalidate="novalidate">
                     <div class="control-group">
-                        <input type="text" class="form-control" id="name" placeholder="Your Name"
-                               required="required" data-validation-required-message="Please enter your name" />
+                        <label for="name"></label><input type="text" class="form-control" id="name" placeholder="Your Name"
+                                                         required="required" data-validation-required-message="Please enter your name" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <input type="email" class="form-control" id="email" placeholder="Your Email"
-                               required="required" data-validation-required-message="Please enter your email" />
+                        <label for="email"></label><input type="email" class="form-control" id="email" placeholder="Your Email"
+                                                          required="required" data-validation-required-message="Please enter your email" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <input type="text" class="form-control" id="subject" placeholder="Subject"
-                               required="required" data-validation-required-message="Please enter a subject" />
+                        <label for="subject"></label><input type="text" class="form-control" id="subject" placeholder="Subject"
+                                                            required="required" data-validation-required-message="Please enter a subject" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                            <textarea class="form-control" rows="8" id="message" placeholder="Message"
-                                      required="required"
-                                      data-validation-required-message="Please enter your message"></textarea>
+                        <label for="message"></label><textarea class="form-control" rows="8" id="message" placeholder="Message"
+                                                               required="required"
+                                                               data-validation-required-message="Please enter your message"></textarea>
                         <p class="help-block text-danger"></p>
                     </div>
                     <div>
@@ -199,9 +197,9 @@
         </div>
         <div class="col-lg-5 mb-5">
             <div class="bg-light p-30 mb-30">
-                <iframe style="width: 100%; height: 250px;"
+                <iframe style="width: 100%; height: 250px; border:0;"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.9311225853014!2d3.3862118146042987!3d6.451211209079429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8fb034e2c0d9%3A0x4da3e4d1c4f54534!2sLocation%20Name!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
-                    frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+                    allowfullscreen="" aria-hidden="false" tabindex="0">
 
                 </iframe>
             </div>
@@ -299,7 +297,6 @@
 
 <!-- Contact Javascript File -->
 <script src="mail/jqBootstrapValidation.min.js"></script>
-<script src="mail/contact.js"></script>
 <%--<!-- Template Javascript -->--%>
 <script src="js/main.js"></script>
 </body>

@@ -23,8 +23,7 @@ public class AdminDAO {
 
     }
 
-    public boolean createNewProduct(String name, int categoryID, double price, int quantity, String image){
-        boolean isProductCreated = false;
+    public void createNewProduct(String name, int categoryID, double price, int quantity, String image){
         try{
             Connection connection = dbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(queries.getAddNewProduct());
@@ -34,11 +33,9 @@ public class AdminDAO {
             preparedStatement.setInt(4, quantity);
             preparedStatement.setString(5, image);
             preparedStatement.executeUpdate();
-            isProductCreated = true;
         }catch (SQLException e) {
             System.out.println("Exception in creating new product: "+e.getMessage());
         }
-        return isProductCreated;
     }
 
     public ResultSet selectAProduct(int productID){
@@ -53,47 +50,38 @@ public class AdminDAO {
         }
         return resultSet;
     }
-    public boolean updateProductQuantity(int productID, int quantity){
-        boolean isQuantityUpdated = false;
+    public void updateProductQuantity(int productID, int quantity){
         try{
             Connection connection = dbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(queries.getUpdateProductQuantity());
             preparedStatement.setInt(1, quantity);
             preparedStatement.setInt(2, productID);
             preparedStatement.executeUpdate();
-            isQuantityUpdated = true;
         }catch (SQLException e) {
             System.out.println("Exception in updating product quantity: "+e.getMessage());
         }
-        return isQuantityUpdated;
     }
-    public boolean updateProductPrice(int productID, double price){
-        boolean isQuantityUpdated = false;
+    public void updateProductPrice(int productID, double price){
         try{
             Connection connection = dbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(queries.getUpdateProductPrice());
             preparedStatement.setDouble(1, price);
             preparedStatement.setInt(2, productID);
             preparedStatement.executeUpdate();
-            isQuantityUpdated = true;
         }catch (SQLException e) {
             System.out.println("Exception in updating product price: "+e.getMessage());
         }
-        return isQuantityUpdated;
     }
 
-    public boolean deleteProduct(int productID){
-        boolean isProductDeleted = false;
+    public void deleteProduct(int productID){
         try{
             Connection connection = dbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(queries.getDeleteProduct());
             preparedStatement.setInt(1, productID);
             preparedStatement.executeUpdate();
-            isProductDeleted = true;
         }catch (SQLException e) {
             System.out.println("Exception in deleting product: "+e.getMessage());
         }
-        return isProductDeleted;
     }
 
 }

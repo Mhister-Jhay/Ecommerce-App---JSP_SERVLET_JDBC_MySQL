@@ -37,13 +37,18 @@ public class AdminProductServlet extends HttpServlet {
             request.setAttribute("productList",productList);
             RequestDispatcher requestDispatcher = null;
             String prevPage = request.getParameter("prevPage");
-            if(prevPage.equals("updateProduct.jsp")){
-                requestDispatcher = request.getRequestDispatcher("updateProduct.jsp");
-            }else if(prevPage.equals("deleteProduct.jsp")){
-                requestDispatcher = request.getRequestDispatcher("deleteProduct.jsp");
-            }else if(prevPage.equals("AdminProduct.jsp")){
-                requestDispatcher = request.getRequestDispatcher("AdminProduct.jsp");
+            switch (prevPage) {
+                case "updateProduct.jsp":
+                    requestDispatcher = request.getRequestDispatcher("updateProduct.jsp");
+                    break;
+                case "deleteProduct.jsp":
+                    requestDispatcher = request.getRequestDispatcher("deleteProduct.jsp");
+                    break;
+                case "AdminProduct.jsp":
+                    requestDispatcher = request.getRequestDispatcher("AdminProduct.jsp");
+                    break;
             }
+            assert requestDispatcher != null;
             requestDispatcher.forward(request, response);
         }catch (ServletException | IOException | SQLException e) {
             System.out.println("Exception in viewing all products: "+e.getMessage());

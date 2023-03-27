@@ -2,7 +2,6 @@ package com.example.week6ecommerce.dao;
 
 import com.example.week6ecommerce.connection.DBConnection;
 import com.example.week6ecommerce.constant.Queries;
-import com.example.week6ecommerce.model.Cart;
 import com.example.week6ecommerce.model.Order;
 
 import java.sql.*;
@@ -11,9 +10,9 @@ import java.util.List;
 import java.time.LocalDate;
 
 public class OrderDAO {
-    private DBConnection dbConnection;
-    private Queries queries;
-    private LocalDate date;
+    private final DBConnection dbConnection;
+    private final Queries queries;
+    private final LocalDate date;
     public OrderDAO(){
         this.dbConnection = new DBConnection();
         this.queries = new Queries();
@@ -28,13 +27,13 @@ public class OrderDAO {
             resultSet = preparedStatement.executeQuery();
 
         } catch (SQLException e) {
-            System.out.println("Exception in viewing cart: " + e.getMessage());
+            System.out.println("Exception in getting customer order: " + e.getMessage());
         }
         return resultSet;
     }
     public List<Order> viewOrder(int customer_id) {
         List<Order> orderList = new ArrayList<>();
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         try {
             Connection connection = dbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(queries.getViewOrder());
@@ -49,24 +48,21 @@ public class OrderDAO {
                         resultSet.getDate("order_date")));
             }
         } catch (SQLException e) {
-            System.out.println("Exception in reading cart: " + e.getMessage());
+            System.out.println("Exception in viewing customer order: " + e.getMessage());
 
         }
         return orderList;
     }
 
-    public boolean deleteCart(int customer_id){
-        boolean isCartDeleted = false;
+    public void deleteCart(int customer_id){
         try {
             Connection connection = dbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(queries.getDeleteCart());
             preparedStatement.setInt(1, customer_id);
             preparedStatement.executeUpdate();
-            isCartDeleted = true;
         } catch (SQLException e) {
-            System.out.println("Exception in viewing cart: " + e.getMessage());
+            System.out.println("Exception in deleting cart: " + e.getMessage());
         }
-        return isCartDeleted;
     }
 
     public boolean checkOut(int customer_id){
@@ -86,7 +82,7 @@ public class OrderDAO {
                 isAddedToOrder = true;
             }
         } catch (SQLException e) {
-            System.out.println("Exception in reading cart: " + e.getMessage());
+            System.out.println("Exception in checking out: " + e.getMessage());
 
         }
         return isAddedToOrder;

@@ -24,8 +24,6 @@ for(Product product:productList){
   <meta content="Free HTML Templates" name="keywords">
   <meta content="Free HTML Templates" name="description">
 
-  <!-- Favicon -->
-  <link href="img/favicon.ico" rel="icon">
 
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -194,15 +192,25 @@ for(Product product:productList){
         </tr>
         </thead>
         <tbody class="align-middle">
-        <%for(int i = 0; i < productList.size(); i++) {
-          if(productList.get(i).getCategory() == 1){%>
+        <%
+          for (Product product : productList) {
+            if (product.getCategory() == 1) {
+        %>
         <tr>
-          <td class="align-middle"><%=productList.get(i).getId()%></td>
-          <td class="align-middle"><img src="img/<%=productList.get(i).getImage()%>" alt="" style="width: 50px;"> <%=productList.get(i).getName()%></td>
-          <td class="align-middle"><%=productList.get(i).getPrice()%></td>
-          <td class="align-middle"><%=productList.get(i).getQuantity()%></td>
+          <td class="align-middle"><%=product.getId()%>
+          </td>
+          <td class="align-middle"><img src="img/<%=product.getImage()%>" alt=""
+                                        style="width: 50px;"> <%=product.getName()%>
+          </td>
+          <td class="align-middle"><%=product.getPrice()%>
+          </td>
+          <td class="align-middle"><%=product.getQuantity()%>
+          </td>
         </tr>
-        <%}}%>
+        <%
+            }
+          }
+        %>
         </tbody>
       </table>
     </div>
@@ -230,15 +238,25 @@ for(Product product:productList){
         </tr>
         </thead>
         <tbody class="align-middle">
-        <%for(int j = 0; j < productList.size(); j++) {
-          if(productList.get(j).getCategory() == 2){%>
+        <%
+          for (Product product : productList) {
+            if (product.getCategory() == 2) {
+        %>
         <tr>
-          <td class="align-middle"><%=productList.get(j).getId()%></td>
-          <td class="align-middle"><img src="img/<%=productList.get(j).getImage()%>" alt="" style="width: 50px;"> <%=productList.get(j).getName()%></td>
-          <td class="align-middle"><%=productList.get(j).getPrice()%></td>
-          <td class="align-middle"><%=productList.get(j).getQuantity()%></td>
+          <td class="align-middle"><%=product.getId()%>
+          </td>
+          <td class="align-middle"><img src="img/<%=product.getImage()%>" alt=""
+                                        style="width: 50px;"> <%=product.getName()%>
+          </td>
+          <td class="align-middle"><%=product.getPrice()%>
+          </td>
+          <td class="align-middle"><%=product.getQuantity()%>
+          </td>
         </tr>
-        <%}}%>
+        <%
+            }
+          }
+        %>
         </tbody>
       </table>
     </div>
@@ -267,15 +285,25 @@ for(Product product:productList){
         </tr>
         </thead>
         <tbody class="align-middle">
-        <%for(int k = 0; k < productList.size(); k++) {
-          if(productList.get(k).getCategory() == 3){%>
+        <%
+          for (Product product : productList) {
+            if (product.getCategory() == 3) {
+        %>
         <tr>
-          <td class="align-middle"><%=productList.get(k).getId()%></td>
-          <td class="align-middle"><img src="img/<%=productList.get(k).getImage()%>" alt="" style="width: 50px;"> <%=productList.get(k).getName()%></td>
-          <td class="align-middle"><%=productList.get(k).getPrice()%></td>
-          <td class="align-middle"><%=productList.get(k).getQuantity()%></td>
+          <td class="align-middle"><%=product.getId()%>
+          </td>
+          <td class="align-middle"><img src="img/<%=product.getImage()%>" alt=""
+                                        style="width: 50px;"> <%=product.getName()%>
+          </td>
+          <td class="align-middle"><%=product.getPrice()%>
+          </td>
+          <td class="align-middle"><%=product.getQuantity()%>
+          </td>
         </tr>
-        <%}}%>
+        <%
+            }
+          }
+        %>
         </tbody>
       </table>
     </div>
@@ -319,7 +347,6 @@ for(Product product:productList){
 
 <!-- Contact Javascript File -->
 <script src="mail/jqBootstrapValidation.min.js"></script>
-<script src="mail/contact.js"></script>
 <%--<!-- Template Javascript -->--%>
 <script src="js/main.js"></script>
 </body>

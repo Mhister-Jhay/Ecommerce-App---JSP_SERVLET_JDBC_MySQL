@@ -11,9 +11,6 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -133,19 +130,29 @@
                 <form method="post" action="AddProduct">
                     <tr>
                         <td>
-                            <input type="text" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="name" placeholder="Product Name">
+                            <label>
+                                <input type="text" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="name" placeholder="Product Name">
+                            </label>
                         </td>
                         <td>
-                            <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="category_id" placeholder="Category">
+                            <label>
+                                <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="category_id" placeholder="Category">
+                            </label>
                         </td>
                         <td>
-                            <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="price" placeholder="Price">
+                            <label>
+                                <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="price" placeholder="Price">
+                            </label>
                         </td>
                         <td>
-                            <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="quantity" placeholder="Quantity">
+                            <label>
+                                <input type="number" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="quantity" placeholder="Quantity">
+                            </label>
                         </td>
                         <td>
-                            <input type="text" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="image" placeholder="Image">
+                            <label>
+                                <input type="text" class="form-control form-control-sm bg-secondary2 border-0 text-center" name="image" placeholder="Image">
+                            </label>
                             <input type="hidden" name="prevPage" value="AdminHome.jsp">
                         </td>
                         <td>
@@ -168,7 +175,9 @@
         <div class="col-12">
             <form method="get" action="SearchProduct" class="form-inline">
                 <div class="input-group">
-                    <input type="number" name="product_id" placeholder="Enter Product ID" class="form-control">
+                    <label>
+                        <input type="number" name="product_id" placeholder="Enter Product ID" class="form-control">
+                    </label>
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary">
                             <i class="fa fa-search"></i> Search
@@ -209,7 +218,9 @@
                             <input type="hidden" name="product_id" value="<%=product.get(0).getId()%>">
                             <input type="hidden" name="quantity" value="0">
                             <input type="hidden" name="prevPage" value="AdminHome.jsp">
-                            <input type="number" name="price" placeholder="Enter Price" class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            <label>
+                                <input type="number" name="price" placeholder="Enter Price" class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            </label>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-sm btn-primary">Update Price</button>
                             </div>
@@ -221,7 +232,9 @@
                             <input type="hidden" name="product_id" value="<%=product.get(0).getId()%>">
                             <input type="hidden" name="price" value="0.0">
                             <input type="hidden" name="prevPage" value="AdminHome.jsp">
-                            <input type="number" name="quantity" placeholder="Enter Quantity" class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            <label>
+                                <input type="number" name="quantity" placeholder="Enter Quantity" class="form-control form-control-sm bg-secondary2 border-0 text-center">
+                            </label>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-sm btn-primary">Update Quantity</button>
                             </div>
@@ -280,7 +293,6 @@
 
 <!-- Contact Javascript File -->
 <script src="mail/jqBootstrapValidation.min.js"></script>
-<script src="mail/contact.js"></script>
 <%--<!-- Template Javascript -->--%>
 <script src="js/main.js"></script>
 </body>

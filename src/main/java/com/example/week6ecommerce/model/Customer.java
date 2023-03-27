@@ -2,7 +2,6 @@ package com.example.week6ecommerce.model;
 
 import lombok.Data;
 
-import java.util.UUID;
 
 @Data
 public class Customer {
@@ -25,8 +24,4 @@ public class Customer {
 
     }
 
-    public static void main(String[] args) {
-        Customer customer = new Customer();
-
-    }
 }

@@ -1,7 +1,6 @@
 package com.example.week6ecommerce.controller;
 
 import com.example.week6ecommerce.dao.WishlistDAO;
-import com.example.week6ecommerce.model.Order;
 import com.example.week6ecommerce.model.Product;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
