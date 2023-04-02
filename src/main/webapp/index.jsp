@@ -282,7 +282,6 @@
                     </div>
                     <div class="flex-fill pl-3">
                         <h6 style="color: black">Groceries</h6>
-                        <small class="text-body" style="color: black">11 Products</small>
                     </div>
                 </div>
             </a>
@@ -295,7 +294,6 @@
                     </div>
                     <div class="flex-fill pl-3">
                         <h6 style="color: black">Fashion</h6>
-                        <small class="text-body" style="color: black">6 Products</small>
                     </div>
                 </div>
             </a>
@@ -308,7 +306,6 @@
                     </div>
                     <div class="flex-fill pl-3">
                         <h6 style="color: black">Electronics and Mobile</h6>
-                        <small class="text-body" style="color: black">7 Products</small>
                     </div>
                 </div>
             </a>
